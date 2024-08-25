@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+    Brand<input id="cbrand">
+    Model<input id="cmodel">
+    Year<input id="cyear">
+    Color<input id="ccolor">
+    Price<input id="cprice">
+
+    <button onclick="add()">Add</button>
+    <hr>
+    <div id="Cars"></div>
+    <script>
+        const Server = "http://localhost:3000/cars/"
+
+        const getData = async () => {
+            const res = await axios(Server)
+            Cars.innerHTML = res.data.map(car =>
+                `<div>
+            <button onclick="del('${car.id}')">delete</button>
+            brand: ${car.brand},
+            model: ${car.model},
+            year: ${car.year},
+            color: ${car.color},
+            price: ${car.price}
+            </div>`).join("")
+        }
+        getData()
+
+        const del = (id) => {
+            const delSevrver = `${Server}${id}`
+            console.log(delSevrver);
+            axios.delete(delSevrver).then(res => console.log(res.data))
+        }
+
+        const add = () => {
+            axios.post(Server, { "brand": cbrand.value, "model": cmodel.value, "year": cyear.value, "color": ccolor.value, "price": cprice.value }).then(res => console.log(res.data));
+        }
+    </script>
+</body>
+
+</html>

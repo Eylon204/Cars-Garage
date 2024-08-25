@@ -1,0 +1,28 @@
+{
+  "cars": [
+    {
+      "id": "97ea",
+      "brand": "minicupper",
+      "model": "Sport",
+      "year": "2024",
+      "color": "red",
+      "price": "20000"
+    },
+    {
+      "id": "f03d",
+      "brand": "",
+      "model": "",
+      "year": "",
+      "color": "",
+      "price": ""
+    },
+    {
+      "id": "3831",
+      "brand": "",
+      "model": "",
+      "year": "",
+      "color": "",
+      "price": ""
+    }
+  ]
+}
